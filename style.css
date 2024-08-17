@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 body{
-    margin: 0;
-    background-color: #F4F4F4;
-    font-family: Poppins;
+    /* margin: 0; */
+    /* background-color: #F4F4F4; */
+    background-color: #ffffff;
+    /* font-family: Poppins; */
 }
 :root{
     --item1-transform: translateX(-100%) translateY(-5%) scale(1.5);
@@ -30,33 +31,17 @@ body{
     --item5-zIndex: 7;
     --item5-opacity: 0;
 }
-header{
-    width: 1140px;
-    max-width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    height: 50px;
-    align-items: center;
-}
-header .logo{
-    font-weight: bold;
-}
-header nav a{
-    margin-left: 30px;
-    text-decoration: none;
-    color: #555;
-    font-weight: 500;
-}
 
-/* carousel */
-.carousel{
+
+/* carouselSlider */
+.carouselSlider{
     position: relative;
     height: 800px;
     overflow: hidden;
     margin-top: -50px;
 }
-.carousel .list{
+.carouselSlider .list{
+    font-family: Poppins;
     position: absolute;
     width: 1140px;
     max-width: 90%;
@@ -64,7 +49,7 @@ header nav a{
     left: 50%;
     transform: translateX(-50%);
 }
-.carousel .list .item{
+.carouselSlider .list .item{
     position: absolute;
     left: 0%;
     width: 70%;
@@ -72,27 +57,27 @@ header nav a{
     font-size: 15px;
     transition: left 0.5s, opacity 0.5s, width 0.5s;
 }
-.carousel .list .item:nth-child(n + 6){
+.carouselSlider .list .item:nth-child(n + 6){
     opacity: 0;
 }
-.carousel .list .item:nth-child(2){
+.carouselSlider .list .item:nth-child(2){
     z-index: 10;
     transform: translateX(0);
 }
-.carousel .list .item img{
+.carouselSlider .list .item img{
     width: 50%;
     position: absolute;
-    right: 0;
+    right: -10%;
     top: 50%;
     transform: translateY(-50%);
     transition: right 1.5s;
 }
 
-.carousel .list .item .introduce{
+.carouselSlider .list .item .introduce{
     opacity: 0;
     pointer-events: none;
 }
-.carousel .list .item:nth-child(2) .introduce{
+.carouselSlider .list .item:nth-child(2) .introduce{
     opacity: 1;
     pointer-events: auto;
     width: 400px;
@@ -101,20 +86,22 @@ header nav a{
     transform:  translateY(-50%);
     transition: opacity 0.5s;
 }
-.carousel .list .item .introduce .title{
+.carouselSlider .list .item .introduce .title{
     font-size: 2em;
     font-weight: 500;
     line-height: 1em;
+    color: #0E1422;
 }
-.carousel .list .item .introduce .topic{
+.carouselSlider .list .item .introduce .topic{
     font-size: 4em;
     font-weight: 500;
+    color: #0E1422;
 }
-.carousel .list .item .introduce .des{
+.carouselSlider .list .item .introduce .des{
     font-size: small;
-    color: #5559;
+    color: #0E1422;
 }
-.carousel .list .item .introduce .seeMore{
+.carouselSlider .list .item .introduce .seeMore{
     font-family: Poppins;
     margin-top: 1.2em;
     padding: 5px 0;
@@ -125,37 +112,37 @@ header nav a{
     letter-spacing: 3px;
     transition: background 0.5s;
 }
-.carousel .list .item .introduce .seeMore:hover{
+.carouselSlider .list .item .introduce .seeMore:hover{
     background: #eee;
 }
-.carousel .list .item:nth-child(1){
+.carouselSlider .list .item:nth-child(1){
     transform: var(--item1-transform);
     filter: var(--item1-filter);
     z-index: var(--item1-zIndex);
     opacity: var(--item1-opacity);
     pointer-events: none;
 }
-.carousel .list .item:nth-child(3){
+.carouselSlider .list .item:nth-child(3){
     transform: var(--item3-transform);
     filter: var(--item3-filter);
     z-index: var(--item3-zIndex);
 }
-.carousel .list .item:nth-child(4){
+.carouselSlider .list .item:nth-child(4){
     transform: var(--item4-transform);
     filter: var(--item4-filter);
     z-index: var(--item4-zIndex);
 }
-.carousel .list .item:nth-child(5){
+.carouselSlider .list .item:nth-child(5){
     transform: var(--item5-transform);
     filter: var(--item5-filter);
     opacity: var(--item5-opacity);
     pointer-events: none;
 }
 /* animation text in item2 */
-.carousel .list .item:nth-child(2) .introduce .title,
-.carousel .list .item:nth-child(2) .introduce .topic,
-.carousel .list .item:nth-child(2) .introduce .des,
-.carousel .list .item:nth-child(2) .introduce .seeMore{
+.carouselSlider .list .item:nth-child(2) .introduce .title,
+.carouselSlider .list .item:nth-child(2) .introduce .topic,
+.carouselSlider .list .item:nth-child(2) .introduce .des,
+.carouselSlider .list .item:nth-child(2) .introduce .seeMore{
     opacity: 0;
     animation: showContent 0.5s 1s ease-in-out 1 forwards;
 }
@@ -169,17 +156,17 @@ header nav a{
         filter: blur(0px);
     }
 }
-.carousel .list .item:nth-child(2) .introduce .topic{
+.carouselSlider .list .item:nth-child(2) .introduce .topic{
     animation-delay: 1.2s;
 }
-.carousel .list .item:nth-child(2) .introduce .des{
+.carouselSlider .list .item:nth-child(2) .introduce .des{
     animation-delay: 1.4s;
 }
-.carousel .list .item:nth-child(2) .introduce .seeMore{
+.carouselSlider .list .item:nth-child(2) .introduce .seeMore{
     animation-delay: 1.6s;
 }
-/* next click */
-.carousel.next .item:nth-child(1){
+/* nextSlider click */
+.carouselSlider.nextSlider .item:nth-child(1){
     animation: transformFromPosition2 0.5s ease-in-out 1 forwards;
 }
 @keyframes transformFromPosition2{
@@ -189,7 +176,7 @@ header nav a{
         opacity: var(--item2-opacity);
     }
 }
-.carousel.next .item:nth-child(2){
+.carouselSlider.nextSlider .item:nth-child(2){
     animation: transformFromPosition3 0.7s ease-in-out 1 forwards;
 }
 @keyframes transformFromPosition3{
@@ -199,7 +186,7 @@ header nav a{
         opacity: var(--item3-opacity);
     }
 }
-.carousel.next .item:nth-child(3){
+.carouselSlider.nextSlider .item:nth-child(3){
     animation: transformFromPosition4 0.9s ease-in-out 1 forwards;
 }
 @keyframes transformFromPosition4{
@@ -209,7 +196,7 @@ header nav a{
         opacity: var(--item4-opacity);
     }
 }
-.carousel.next .item:nth-child(4){
+.carouselSlider.nextSlider .item:nth-child(4){
     animation: transformFromPosition5 1.1s ease-in-out 1 forwards;
 }
 @keyframes transformFromPosition5{
@@ -219,17 +206,17 @@ header nav a{
         opacity: var(--item5-opacity);
     }
 }
-/* previous */
-.carousel.prev .list .item:nth-child(5){
+/* prevSliderious */
+.carouselSlider.prevSlider .list .item:nth-child(5){
     animation: transformFromPosition4 0.5s ease-in-out 1 forwards;
 }
-.carousel.prev .list .item:nth-child(4){
+.carouselSlider.prevSlider .list .item:nth-child(4){
     animation: transformFromPosition3 0.7s ease-in-out 1 forwards;
 }
-.carousel.prev .list .item:nth-child(3){
+.carouselSlider.prevSlider .list .item:nth-child(3){
     animation: transformFromPosition2 0.9s ease-in-out 1 forwards;
 }
-.carousel.prev .list .item:nth-child(2){
+.carouselSlider.prevSlider .list .item:nth-child(2){
     animation: transformFromPosition1 1.1s ease-in-out 1 forwards;
 }
 @keyframes transformFromPosition1{
@@ -241,28 +228,28 @@ header nav a{
 }
 
 /* detail  */
-.carousel .list .item .detail{
+.carouselSlider .list .item .detail{
     opacity: 0;
     pointer-events: none;
 }
 /* showDetail */
-.carousel.showDetail .list .item:nth-child(3),
-.carousel.showDetail .list .item:nth-child(4){
+.carouselSlider.showDetail .list .item:nth-child(3),
+.carouselSlider.showDetail .list .item:nth-child(4){
     left: 100%;
     opacity: 0;
     pointer-events: none;
 }
-.carousel.showDetail .list .item:nth-child(2){
+.carouselSlider.showDetail .list .item:nth-child(2){
     width: 100%;
 }
-.carousel.showDetail .list .item:nth-child(2) .introduce{
+.carouselSlider.showDetail .list .item:nth-child(2) .introduce{
     opacity: 0;
     pointer-events: none;
 }
-.carousel.showDetail .list .item:nth-child(2) img{
+.carouselSlider.showDetail .list .item:nth-child(2) img{
     right: 50%;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail{
     opacity: 1;
     width: 50%;
     position: absolute;
@@ -272,25 +259,25 @@ header nav a{
     text-align: right;
     pointer-events: auto;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .title{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .title{
     font-size: 4em;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .specifications{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications{
     display: flex;
     gap: 10px;
     width: 100%;
     border-top: 1px solid #5553;
     margin-top: 20px;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .specifications div{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications div{
     width: 90px;
     text-align: center;
     flex-shrink: 0;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .specifications div p:nth-child(1){
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications div p:nth-child(1){
     font-weight: bold;
 }
-.carousel.carousel.showDetail .list .item:nth-child(2) .checkout button{
+.carouselSlider.carouselSlider.showDetail .list .item:nth-child(2) .checkout button{
     font-family: Poppins;
     background-color: transparent;
     border: 1px solid #5555;
@@ -299,29 +286,29 @@ header nav a{
     letter-spacing: 2px;
     font-weight: 500;
 }
-.carousel.carousel.showDetail .list .item:nth-child(2) .checkout button:nth-child(2){
-    background-color: #693EFF;
+.carouselSlider.carouselSlider.showDetail .list .item:nth-child(2) .checkout button:nth-child(2){
+    background-color: #e0436a;
     color: #eee;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail  .title,
-.carousel.showDetail .list .item:nth-child(2) .detail  .des,
-.carousel.showDetail .list .item:nth-child(2) .detail .specifications,
-.carousel.showDetail .list .item:nth-child(2) .detail .checkout{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail  .title,
+.carouselSlider.showDetail .list .item:nth-child(2) .detail  .des,
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications,
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .checkout{
     opacity: 0;
     animation: showContent 0.5s 1s ease-in-out 1 forwards;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail  .des{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail  .des{
     animation-delay: 1.2s;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .specifications{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications{
     animation-delay: 1.4s;
 }
-.carousel.showDetail .list .item:nth-child(2) .detail .checkout{
+.carouselSlider.showDetail .list .item:nth-child(2) .detail .checkout{
     animation-delay: 1.6s;
 }
-.arrows{
+.arrowsSlider{
     position: absolute;
-    bottom: 10px;
+    bottom: 130px;
     width: 1140px;
     max-width: 90%;
     display: flex;
@@ -329,18 +316,22 @@ header nav a{
     left: 50%;
     transform: translateX(-50%);
 }
-#prev,
-#next{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+#prevSlider,
+#nextSlider{
+	
+	border: 1px solid lightgrey;
+    background-color: white;
+    /* width: 40px; */
+    /* height: 40px; */
+	box-shadow:0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
     font-family: monospace;
-    border: 1px solid #5555;
-    font-size: large;
+    font-size: 30px;
     bottom: 20%;
     left: 10%;
+	
 }
-#next{
+#nextSlider{
     left: unset;
     right: 10%;
 }
@@ -360,74 +351,86 @@ header nav a{
     /* opacity: 0; */
     transition: opacity 0.5s;
 }
-.carousel.showDetail #back{
+.carouselSlider.showDetail #back{
     opacity: 1;
 }
-.carousel.showDetail #prev,
-.carousel.showDetail #next{
+.carouselSlider.showDetail #prevSlider,
+.carouselSlider.showDetail #nextSlider{
     opacity: 0;
     pointer-events: none;
 }
-.carousel::before{
+.carouselSlider::before{
     width: 500px;
-    height: 300px;
+    height: 350px;
     content: '';
-    background-image: linear-gradient(70deg, #DC422A, blue);
+    background-image: linear-gradient(70deg, #fd2706, #ec164c);
     position: absolute;
     z-index: -1;
     border-radius: 20% 30% 80% 10%;
-    filter: blur(150px);
+    filter: blur(50px);
     top: 50%;
     left: 50%;
     transform: translate(-10%, -50%);
     transition: 1s;
 }
-.carousel.showDetail::before{
+.carouselSlider.showDetail::before{
     transform: translate(-100%, -50%) rotate(90deg);
     filter: blur(130px);
 }
 @media screen and (max-width: 991px){
     /* ipad, tablets */
-    .carousel .list .item{
+    .carouselSlider .list .item{
         width: 90%;
     }
-    .carousel.showDetail .list .item:nth-child(2) .detail .specifications{
+    .carouselSlider.showDetail .list .item:nth-child(2) .detail .specifications{
         overflow: auto;
     }
-    .carousel.showDetail .list .item:nth-child(2) .detail .title{
+    .carouselSlider.showDetail .list .item:nth-child(2) .detail .title{
         font-size: 2em;
     }
 }
 @media screen and (max-width: 767px){
     /* mobile */
-    .carousel{
+    .carouselSlider{
         height: 600px;
     }
-    .carousel .list .item{
+    .carouselSlider .list .item{
         width: 100%;
         font-size: 10px;
     }
     
-    .carousel .list{
+    .carouselSlider .list{
         height: 100%;
     }
-    .carousel .list .item:nth-child(2) .introduce{
+    .carouselSlider .list .item:nth-child(2) .introduce{
         width: 50%;
     }
     
-    .carousel .list .item img{
+    .carouselSlider .list .item img{
         width: 40%;
+        transition: move-up-down 2s ease-in-out infinite;
     }
-    .carousel.showDetail .list .item:nth-child(2) .detail{
+    @keyframes move-up-down {
+        0%{
+            transform:translateY(0);
+        }
+        50%{
+            transform:translateY(-10px);
+        }
+        100%{
+            transform:translateY(0);
+        }
+    }
+    .carouselSlider.showDetail .list .item:nth-child(2) .detail{
         backdrop-filter: blur(10px);
         font-size: small;
     }
-    .carousel .list .item:nth-child(2) .introduce .des,
-    .carousel.showDetail .list .item:nth-child(2) .detail .des{
+    .carouselSlider .list .item:nth-child(2) .introduce .des,
+    .carouselSlider.showDetail .list .item:nth-child(2) .detail .des{
         height: 100px;
         overflow: auto;
     }
-    .carousel.showDetail .list .item:nth-child(2) .detail .checkout{
+    .carouselSlider.showDetail .list .item:nth-child(2) .detail .checkout{
         display: flex;
         width: max-content;
         float: right;

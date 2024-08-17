@@ -1,42 +1,73 @@
-let nextButton = document.getElementById('next');
-let prevButton = document.getElementById('prev');
-let carousel = document.querySelector('.carousel');
-let listHTML = document.querySelector('.carousel .list');
-let seeMoreButtons = document.querySelectorAll('.seeMore');
-let backButton = document.getElementById('back');
+const nextSliderButton = document.getElementById('nextSlider');
+const prevSliderButton = document.getElementById('prevSlider');
+const carouselSlider = document.querySelector('.carouselSlider');
+const listHTML = document.querySelector('.carouselSlider .list');
+const seeMoreButtons = document.querySelectorAll('.seeMore');
+const backButton = document.getElementById('back');
 
-nextButton.onclick = function(){
-    showSlider('next');
-}
-prevButton.onclick = function(){
-    showSlider('prev');
-}
-let unAcceppClick;
+let unAcceptClick;
+let autoSlideInterval;
+
+// Function to show the slider with animation
 const showSlider = (type) => {
-    nextButton.style.pointerEvents = 'none';
-    prevButton.style.pointerEvents = 'none';
+    nextSliderButton.style.pointerEvents = 'none';
+    prevSliderButton.style.pointerEvents = 'none';
 
-    carousel.classList.remove('next', 'prev');
-    let items = document.querySelectorAll('.carousel .list .item');
-    if(type === 'next'){
+    carouselSlider.classList.remove('nextSlider', 'prevSlider');
+    const items = document.querySelectorAll('.carouselSlider .list .item');
+    if (type === 'nextSlider') {
         listHTML.appendChild(items[0]);
-        carousel.classList.add('next');
-    }else{
+        carouselSlider.classList.add('nextSlider');
+    } else {
         listHTML.prepend(items[items.length - 1]);
-        carousel.classList.add('prev');
+        carouselSlider.classList.add('prevSlider');
     }
-    clearTimeout(unAcceppClick);
-    unAcceppClick = setTimeout(()=>{
-        nextButton.style.pointerEvents = 'auto';
-        prevButton.style.pointerEvents = 'auto';
-    }, 2000)
-}
-seeMoreButtons.forEach((button) => {
-    button.onclick = function(){
-        carousel.classList.remove('next', 'prev');
-        carousel.classList.add('showDetail');
-    }
+
+    clearTimeout(unAcceptClick);
+    unAcceptClick = setTimeout(() => {
+        nextSliderButton.style.pointerEvents = 'auto';
+        prevSliderButton.style.pointerEvents = 'auto';
+    }, 2000);
+};
+
+// Function to start auto-slide
+const startAutoSlide = () => {
+    autoSlideInterval = setInterval(() => {
+        showSlider('nextSlider');
+    }, 3000);
+};
+
+// Function to stop auto-slide
+const stopAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+};
+
+// Initialize auto-slide
+startAutoSlide();
+
+// Event listeners for navigation buttons
+nextSliderButton.addEventListener('click', () => {
+    showSlider('nextSlider');
+    stopAutoSlide();
+    startAutoSlide(); // Restart auto-slide after manual interaction
 });
-backButton.onclick = function(){
-    carousel.classList.remove('showDetail');
-}
+prevSliderButton.addEventListener('click', () => {
+    showSlider('prevSlider');
+    stopAutoSlide();
+    startAutoSlide(); // Restart auto-slide after manual interaction
+});
+
+// Event listeners for detail view buttons
+seeMoreButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        carouselSlider.classList.remove('nextSlider', 'prevSlider');
+        carouselSlider.classList.add('showDetail');
+        stopAutoSlide(); // Stop auto-slide when showing detail view
+    });
+});
+
+// Event listener for back button
+backButton.addEventListener('click', () => {
+    carouselSlider.classList.remove('showDetail');
+    startAutoSlide(); // Restart auto-slide when going back to carousel
+});
